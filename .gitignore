@@ -165,4 +165,3 @@ cython_debug/
 *.pem
 !.gitkeep
 *.log
-setting.py

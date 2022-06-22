@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+      build: .
+      image: certificate_manager
+      container_name: certificate_manager
+      environment:
+        - TZ=Europe/Moscow
+      volumes:
+        - ./service_private_key.pem:/app/service_private_key.pem:ro
+        - ./setting.py:/app/setting.py:ro
+        - certificates:/certificate_folder
+  nginx:
+      image: nginx:latest
+      environment:
+        - TZ=Europe/Moscow
+      volumes:
+        - certificates:/certificate_folder:ro
+
+volumes:
+  certificates: {}

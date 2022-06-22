@@ -64,12 +64,12 @@ def main():
                             )
                     else:
                         logger.info(
-                            f'Сертификат для {domain} не требуется обновлять'
+                            f'{test_site} -> Сертификат для {domain} не требуется обновлять'
                         )
-                    logger.info(
-                        f'Сертификат для {test_site} не найдет, скачиваю'
-                    )
             else:
+                logger.warning(
+                        f'Сертификат для {domain} не найдет, скачиваю'
+                    )
                 try:
                     download_certificate(iam, certificate_id, domain)
                     logger.info(f'Сертификат для {domain} скачен')

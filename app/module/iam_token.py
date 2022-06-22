@@ -10,7 +10,7 @@ from .logger import Logger
 
 load_dotenv()
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', os.pardir))
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 SERVICE_ACCOUNT_ID = setting.SERVICE_ACCOUNT_ID
 SERVICE_PRIVATE_KEY_ID = setting.SERVICE_PRIVATE_KEY_ID
 SERVICE_PRIVATE_KEY_PEM = os.path.join(
