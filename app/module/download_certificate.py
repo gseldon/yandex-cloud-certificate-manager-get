@@ -1,7 +1,9 @@
 import requests
 import os
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+BASE_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), '..', os.pardir)
+)
 
 
 def download_certificate(iam: str, certificate_id: str, site: str):

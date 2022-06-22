@@ -1,18 +1,18 @@
 import os
-import setting
 import time
 from dotenv import load_dotenv
 
-from app.iam_token import get_iam_token
-from app.info_cert import CertificateInfo
-from app.download_certificate import download_certificate
-from app.ssl_expiry_datetime import ssl_expiry_datetime
-from app.logger import Logger
+import setting
+from module.iam_token import get_iam_token
+from module.info_cert import CertificateInfo
+from module.download_certificate import download_certificate
+from module.ssl_expiry_datetime import ssl_expiry_datetime
+from module.logger import Logger
 
 load_dotenv()
 
 BASE_DIR = os.path.abspath(
-    os.path.join(os.path.dirname(__file__))
+    os.path.join(os.path.dirname(__file__), '..', os.pardir)
 )
 DOMAINS = setting.DOMAINS
 FOLDER_ID = setting.FOLDER_ID
