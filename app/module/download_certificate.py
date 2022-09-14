@@ -1,5 +1,5 @@
-"""
-Certificate loading module.
+"""Certificate loading module.
+
 iam, certificate_id, domain
 """
 import os

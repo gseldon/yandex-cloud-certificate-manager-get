@@ -30,7 +30,7 @@ def check_exist_cert(domain, certificate_id):
     )
     if (
         os.path.exists(os.path.join(BASE_DIR, full_chain_file_name))
-        and os.path.exists(os.path.join(BASE_DIR, private_file_name))
+            and os.path.exists(os.path.join(BASE_DIR, private_file_name))
     ):
         return True
     return False
@@ -72,7 +72,7 @@ def main():
             else:
                 logger.warning(
                         'Сертификат для %s не найдет, скачиваю', domain
-                    )
+                )
                 try:
                     download_certificate(iam, certificate_id, domain)
                     logger.info(

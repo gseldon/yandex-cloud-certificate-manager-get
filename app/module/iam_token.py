@@ -24,6 +24,7 @@ logger = Logger().get_logger()
 
 def get_jwt_token() -> str:
     """Получение JWT токена для сервисного аккаунта.
+
     SERVICE_ACCOUNT_ID: id сервисного аккаунта с правами
     certificate-manager.certificates.downloader
     SERVICE_PRIVATE_KEY_PEM: pem файл для сервисного аккаунта
@@ -79,7 +80,7 @@ def get_iam_token() -> str:
 
 
 def main():
-    """Основной вызов"""
+    """Основной вызов."""
     get_iam_token()
 
 

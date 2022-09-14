@@ -10,17 +10,17 @@ RETRY_TIME = 86400
 FOLDER_ID = 'certificate_manager_folder_id'
 
 DOMAINS = {
-        "domain1": {
-            "certificate_id": "certificate_id_1",
-            "test_site": [
-                "test_site_1",
-                "test_site_2"
-            ]
-        },
-        "domain2": {
-            "certificate_id": "certificate_id_2",
-            "test_site": [
-                "test_site_1"
-            ]
-        }
+    "domain1": {
+        "certificate_id": "certificate_id_1",
+        "test_site": [
+            "test_site_1",
+            "test_site_2"
+        ]
+    },
+    "domain2": {
+        "certificate_id": "certificate_id_2",
+        "test_site": [
+            "test_site_1"
+        ]
+    }
 }

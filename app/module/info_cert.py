@@ -1,6 +1,4 @@
-"""
-Obtaining information on certificates.
-"""
+"""Obtaining information on certificates."""
 from datetime import datetime
 
 import requests
@@ -11,19 +9,20 @@ ENDPOINT = (
 
 
 class CertificateInfo:
-    """
-    Obtaining information on certificates.
-    """
-    def __init__(self,
-                 certificate_id: str,
-                 folder_id: str,
-                 iam: str,
-                 ) -> None:
+    """Obtaining information on certificates."""
+
+    def __init__(
+            self,
+            certificate_id: str,
+            folder_id: str,
+            iam: str,
+            ) -> None:
         self.certificate_id = certificate_id
         self.folder_id = folder_id
         self.iam = iam
 
     def get_info(self) -> dict:
+        """Получение информации из сертификата."""
         headers = {'Authorization': f'Bearer {self.iam}'}
         params = {'folderId': self.folder_id}
         certificate_manager = ENDPOINT
@@ -42,6 +41,7 @@ class CertificateInfo:
         return certificate_info
 
     def get_not_after_date(self) -> datetime:
+        """Получение даты окончания сертификата."""
         certificate_info = self.get_info()
         date_after_str = certificate_info.get('notAfter')
         date_after = datetime.strptime(date_after_str, "%Y-%m-%dT%H:%M:%SZ")
