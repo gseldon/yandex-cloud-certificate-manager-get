@@ -1,4 +1,4 @@
-[![Codacy Security Scan](https://github.com/gseldon/yandex-cloud-certificate-manager-get/actions/workflows/codacy.yml/badge.svg)](https://github.com/gseldon/yandex-cloud-certificate-manager-get/actions/workflows/codacy.yml)
+[![Codacy Security Scan](https://github.com/gseldon/yandex-cloud-certificate-manager-get/actions/workflows/codacy.yml/badge.svg)](https://github.com/gseldon/yandex-cloud-certificate-manager-get/actions/workflows/codacy.yml)[![Snyk Container](https://github.com/gseldon/yandex-cloud-certificate-manager-get/actions/workflows/snyk-container.yml/badge.svg)](https://github.com/gseldon/yandex-cloud-certificate-manager-get/actions/workflows/snyk-container.yml)
 
 # Программа скачивания сертификатов с YandexCloud Certificate Manager
 
