@@ -36,10 +36,10 @@ def get_jwt_token() -> str:
 
     now = int(time.time())
     payload = {
-            'aud': ENDPOINT,
-            'iss': SERVICE_ACCOUNT_ID,
-            'iat': now,
-            'exp': now + 360
+        'aud': ENDPOINT,
+        'iss': SERVICE_ACCOUNT_ID,
+        'iat': now,
+        'exp': now + 360
     }
 
     # Формирование JWT.
@@ -54,13 +54,13 @@ def get_jwt_token() -> str:
 def exchange_jwt(jwt_token) -> str:
     """Обмен JWT на IAM токен."""
     iam_headers = {
-      'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
     }
     iam_body = {'jwt': jwt_token}
     iam_request = requests.post(
-      ENDPOINT,
-      headers=iam_headers,
-      json=iam_body,
+        ENDPOINT,
+        headers=iam_headers,
+        json=iam_body,
     ).json()
     iam = iam_request.get('iamToken')
     return iam
@@ -79,6 +79,7 @@ def get_iam_token() -> str:
 
 
 def main():
+    """Основной вызов"""
     get_iam_token()
 
 

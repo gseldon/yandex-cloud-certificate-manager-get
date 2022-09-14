@@ -1,13 +1,18 @@
+"""
+Obtaining information on certificates.
+"""
 from datetime import datetime
 
 import requests
 
-ENDPOINT = 'https://certificate-manager.api.cloud.yandex.net/certificate-manager/v1/certificates'
+ENDPOINT = (
+    'https://certificate-manager.api.cloud.yandex.net/certificate-manager/v1/certificates'
+)
 
 
 class CertificateInfo:
     """
-    Получение информации по сертифкату.
+    Obtaining information on certificates.
     """
     def __init__(self,
                  certificate_id: str,

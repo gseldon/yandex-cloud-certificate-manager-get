@@ -1,3 +1,7 @@
+"""
+Certificate loading module.
+iam, certificate_id, domain
+"""
 import os
 
 import requests
@@ -17,7 +21,9 @@ def download_certificate(iam: str, certificate_id: str, site: str):
     headers = {
         'Authorization': f'Bearer {iam}',
     }
-    certificate_service = 'https://data.certificate-manager.api.cloud.yandex.net'
+    certificate_service = (
+        'https://data.certificate-manager.api.cloud.yandex.net'
+    )
     certificate_manager = (
         f'{certificate_service}/certificate-manager/v1/certificates/'
         f'{certificate_id}:getContent'
@@ -43,5 +49,5 @@ def download_certificate(iam: str, certificate_id: str, site: str):
     with open(full_chain_file, 'w', encoding="utf-8") as file:
         file.write(response['certificateChain'][0])
 
-    with open(private_file, 'w', encoding="utf-8") as f:
-        f.write(response['privateKey'])
+    with open(private_file, 'w', encoding="utf-8") as file:
+        file.write(response['privateKey'])
