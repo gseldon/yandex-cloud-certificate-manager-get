@@ -28,9 +28,6 @@ def check_exist_cert(domain, certificate_id):
     private_file_name = (
         f'certificate_folder/{domain}_{certificate_id}_private.pem'
     )
-    print(os.path.join(BASE_DIR, full_chain_file_name))
-    print(os.path.exists(os.path.join(BASE_DIR, full_chain_file_name)))
-    print(os.path.exists(os.path.join(BASE_DIR, private_file_name)))
     if (
         os.path.exists(os.path.join(BASE_DIR, full_chain_file_name))
         and os.path.exists(os.path.join(BASE_DIR, private_file_name))
@@ -52,37 +49,40 @@ def main():
 
             if check_exist_cert(domain, certificate_id):
                 logger.debug(
-                    f'Сертификат домена {domain} найден в папке,'
-                    'проверяем дату'
+                    'Сертификат домена %s найден в папке,'
+                    'проверяем дату', domain
                 )
                 for i in range(len(DOMAINS[domain]['test_site'])):
                     test_site = DOMAINS[domain]['test_site'][i]
                     date_site_not_after = ssl_expiry_datetime(test_site)
-                    if (date_yandex_not_after < date_site_not_after):
+                    if (date_yandex_not_after > date_site_not_after):
                         try:
                             download_certificate(iam, certificate_id, domain)
-                            logger.info(f'Сертификат для {domain} скачен')
+                            logger.info('Сертификат для %s скачен', domain)
                         except Exception as error:
                             logger.error(
-                                'Ошибка скачивания сертификата'
-                                f'{domain} %s', error
+                                'Ошибка скачивания сертификата %s %s',
+                                domain, error
                             )
                     else:
                         logger.info(
-                            f'{test_site} -> Сертификат для {domain} не требуется обновлять'
+                            '%s -> Сертификат для %s не требуется обновлять',
+                            test_site, domain
                         )
             else:
                 logger.warning(
-                        f'Сертификат для {domain} не найдет, скачиваю'
+                        'Сертификат для %s не найдет, скачиваю', domain
                     )
                 try:
                     download_certificate(iam, certificate_id, domain)
-                    logger.info(f'Сертификат для {domain} скачен')
+                    logger.info(
+                        'Сертификат для %s скачен', domain
+                    )
                 except Exception as error:
                     logger.error(
-                        f'Ошибка скачивания сертификата {domain} %s', error
+                        'Ошибка скачивания сертификата %s %s', domain, error
                     )
-        logger.info(f'Ожидаю {RETRY_TIME} секунд')
+        logger.info('Ожидаю %s секунд', RETRY_TIME)
         time.sleep(RETRY_TIME)
 
 

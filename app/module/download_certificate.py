@@ -41,8 +41,7 @@ def download_certificate(iam: str, certificate_id: str, site: str):
     private_file = os.path.join(BASE_DIR, private_file_name)
 
     with open(full_chain_file, 'w', encoding="utf-8") as file:
-        for i in range(len(response)):
-            file.write(response['certificateChain'][0])
+        file.write(response['certificateChain'][0])
 
     with open(private_file, 'w', encoding="utf-8") as f:
         f.write(response['privateKey'])
