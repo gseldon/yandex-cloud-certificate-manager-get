@@ -1,3 +1,5 @@
+[![Codacy Security Scan](https://github.com/gseldon/yandex-cloud-certificate-manager-get/actions/workflows/codacy.yml/badge.svg)](https://github.com/gseldon/yandex-cloud-certificate-manager-get/actions/workflows/codacy.yml)
+
 # Программа скачивания сертификатов с YandexCloud Certificate Manager
 
 Запрашивает из каталога сервис.
