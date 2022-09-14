@@ -6,7 +6,9 @@ ENDPOINT = 'https://certificate-manager.api.cloud.yandex.net/certificate-manager
 
 
 class CertificateInfo:
-    """Получение информации по сертифкату."""
+    """
+    Получение информации по сертифкату.
+    """
     def __init__(self,
                  certificate_id: str,
                  folder_id: str,
@@ -20,6 +22,7 @@ class CertificateInfo:
         headers = {'Authorization': f'Bearer {self.iam}'}
         params = {'folderId': self.folder_id}
         certificate_manager = ENDPOINT
+        certificate_num = 0
         response = requests.get(
             certificate_manager,
             headers=headers,
@@ -30,7 +33,6 @@ class CertificateInfo:
         for certificate in range(certificates_count):
             if response['certificates'][certificate].get('id') == self.certificate_id:
                 certificate_num = certificate
-
         certificate_info = response['certificates'][certificate_num]
         return certificate_info
 

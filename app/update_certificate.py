@@ -13,8 +13,9 @@ import setting
 load_dotenv()
 
 BASE_DIR = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), '..', os.pardir)
+    os.path.join(os.path.dirname(__file__), os.pardir)
 )
+
 DOMAINS = setting.DOMAINS
 FOLDER_ID = setting.FOLDER_ID
 RETRY_TIME = setting.RETRY_TIME
@@ -27,9 +28,12 @@ def check_exist_cert(domain, certificate_id):
     private_file_name = (
         f'certificate_folder/{domain}_{certificate_id}_private.pem'
     )
+    print(os.path.join(BASE_DIR, full_chain_file_name))
+    print(os.path.exists(os.path.join(BASE_DIR, full_chain_file_name)))
+    print(os.path.exists(os.path.join(BASE_DIR, private_file_name)))
     if (
         os.path.exists(os.path.join(BASE_DIR, full_chain_file_name))
-        or os.path.exists(os.path.join(BASE_DIR, private_file_name))
+        and os.path.exists(os.path.join(BASE_DIR, private_file_name))
     ):
         return True
     return False
@@ -61,7 +65,7 @@ def main():
                         except Exception as error:
                             logger.error(
                                 'Ошибка скачивания сертификата'
-                                f'{domain} {error}'
+                                f'{domain} %s', error
                             )
                     else:
                         logger.info(
@@ -76,7 +80,7 @@ def main():
                     logger.info(f'Сертификат для {domain} скачен')
                 except Exception as error:
                     logger.error(
-                        f'Ошибка скачивания сертификата {domain} {error}'
+                        f'Ошибка скачивания сертификата {domain} %s', error
                     )
         logger.info(f'Ожидаю {RETRY_TIME} секунд')
         time.sleep(RETRY_TIME)
