@@ -1,4 +1,4 @@
-FROM bitnami/python:3.10
+FROM 3.10-alpine
 
 ENV PYTHONUNBUFFERED 1
 

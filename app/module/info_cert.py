@@ -4,7 +4,8 @@ from datetime import datetime
 import requests
 
 ENDPOINT = (
-    'https://certificate-manager.api.cloud.yandex.net/certificate-manager/v1/certificates'
+    'https://certificate-manager.api.cloud.yandex.net'
+    '/certificate-manager/v1/certificates'
 )
 
 
@@ -35,7 +36,9 @@ class CertificateInfo:
         certificates_count = len(response['certificates'])
 
         for certificate in range(certificates_count):
-            if response['certificates'][certificate].get('id') == self.certificate_id:
+            if response['certificates'][certificate].get(
+                'id'
+            ) == self.certificate_id:
                 certificate_num = certificate
         certificate_info = response['certificates'][certificate_num]
         return certificate_info

@@ -77,6 +77,7 @@ def get_iam_token() -> str:
             return iam_token
     except Exception as error:
         logger.critical('IAM не выпустился', exc_info=error)
+        return None
 
 
 def main():
