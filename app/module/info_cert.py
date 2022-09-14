@@ -1,5 +1,6 @@
-import requests
 from datetime import datetime
+
+import requests
 
 ENDPOINT = 'https://certificate-manager.api.cloud.yandex.net/certificate-manager/v1/certificates'
 

@@ -1,6 +1,6 @@
+import datetime
 import socket
 import ssl
-import datetime
 
 
 def ssl_expiry_datetime(hostname):
