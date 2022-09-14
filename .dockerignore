@@ -2,3 +2,4 @@ setting.py
 __pycache__/
 LICENSE
 README.md
+**/__pycache__

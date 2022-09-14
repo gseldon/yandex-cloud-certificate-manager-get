@@ -3,7 +3,7 @@ version: '3.8'
 services:
   app:
       build: .
-      image: certificate_manager
+      image: yc_certificate_manager_get:0.1
       container_name: certificate_manager
       environment:
         - TZ=Europe/Moscow
