@@ -1,0 +1,11 @@
+certifi
+cffi
+charset-normalizer
+cryptography
+idna
+pycparser
+PyJWT
+python-dotenv
+requests
+urllib3
+flake8

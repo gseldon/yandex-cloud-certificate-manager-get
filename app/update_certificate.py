@@ -7,6 +7,7 @@ from module.iam_token import get_iam_token
 from module.info_cert import CertificateInfo
 from module.logger import Logger
 from module.ssl_expiry_datetime import ssl_expiry_datetime
+from ssl import SSLCertVerificationError
 
 import setting
 
@@ -46,6 +47,12 @@ def main():
             certificate_id = DOMAINS[domain].get('certificate_id')
             cert = CertificateInfo(certificate_id, FOLDER_ID, iam)
             date_yandex_not_after = cert.get_not_after_date()
+            certificate_status = cert.get_info()["status"]
+            # if certificate_status == "VALIDATING":
+            #     raise Exception(
+            #         'Не верный статус сертификата %s',
+            #         certificate_status
+            #     )
 
             if check_exist_cert(domain, certificate_id):
                 logger.debug(
@@ -54,16 +61,21 @@ def main():
                 )
                 for i in range(len(DOMAINS[domain]['test_site'])):
                     test_site = DOMAINS[domain]['test_site'][i]
-                    date_site_not_after = ssl_expiry_datetime(test_site)
-                    if (date_yandex_not_after > date_site_not_after):
-                        try:
-                            download_certificate(iam, certificate_id, domain)
-                            logger.info('Сертификат для %s скачен', domain)
-                        except Exception as error:
-                            logger.error(
-                                'Ошибка скачивания сертификата %s %s',
-                                domain, error
-                            )
+                    try:
+                        date_site_not_after = ssl_expiry_datetime(test_site)
+
+                    except SSLCertVerificationError:
+                        logger.info(
+                            'Сертификат недействителен %s %s',
+                            domain, date_site_not_after
+                        )
+                        download_certificate(iam, certificate_id, domain)
+                        logger.info('Сертификат для %s скачен', domain)
+                    except Exception as error:
+                        logger.error(
+                            'Ошибка скачивания сертификата %s %s',
+                            domain, error
+                        )
                     else:
                         logger.info(
                             '%s -> Сертификат для %s не требуется обновлять',

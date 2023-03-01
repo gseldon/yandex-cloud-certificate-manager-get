@@ -2,8 +2,7 @@ version: '3.8'
 
 services:
   app:
-      build: .
-      image: yc_certificate_manager_get:0.1
+      image: gseldon/yc_certificate_manager_get:$TAG
       container_name: certificate_manager
       environment:
         - TZ=Europe/Moscow
