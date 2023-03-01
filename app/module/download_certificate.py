@@ -37,10 +37,10 @@ def download_certificate(iam: str, certificate_id: str, site: str):
     ).json()
 
     full_chain_file_name = (
-        f'certificate_folder/{site}_{certificate_id}_full_chain.pem'
+        f'certificate_folder/{site}_full_chain.pem'
     )
     private_file_name = (
-        f'certificate_folder/{site}_{certificate_id}_private.pem'
+        f'certificate_folder/{site}_private.pem'
     )
 
     full_chain_file = os.path.join(BASE_DIR, full_chain_file_name)

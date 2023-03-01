@@ -7,8 +7,8 @@ services:
       environment:
         - TZ=Europe/Moscow
       volumes:
-        - ./service_private_key.pem:/app/service_private_key.pem:ro
-        - ./setting.py:/app/setting.py:ro
+        - ./app/service_private_key.pem:/app/service_private_key.pem:ro
+        - ./app/setting.py:/app/setting.py:ro
         - certificates:/certificate_folder
   nginx:
       image: nginx:latest
